@@ -50,6 +50,15 @@ LIBS= \
 -L../kms-core/build/ \
 -L./build/
 
+FACEOVERLAY_TARGET=libfaceoverlay.dll
+
+FACEOVERLAY_SRC= \
+./src/gst-plugins/faceoverlay/faceoverlay.c \
+./src/gst-plugins/faceoverlay/kmsfaceoverlay.c
+
+FACEOVERLAY_LIBS= \
+-lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lgstbase-1.0
+
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.cpp=.o)
 IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.cpp=.o)
