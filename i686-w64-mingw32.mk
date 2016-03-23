@@ -39,7 +39,8 @@ CFLAGS= \
 -I./src/gst-plugins/ \
 -I./src/gst-plugins/commons/ \
 -I../jsoncpp/include/ \
--I../kms-jsonrpc/src/
+-I../kms-jsonrpc/src/ \
+-I../opencv-3.1.0/build/include/
 
 LIBS= \
 -L/usr/i686-w64-mingw32/sys-root/mingw/lib \
@@ -59,15 +60,24 @@ FACEOVERLAY_SRC= \
 FACEOVERLAY_LIBS= \
 -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lgstbase-1.0
 
+LOGOOVERLAY_TARGET=liblogooverlay.dll
+
+LOGOOVERLAY_SRC= \
+./src/gst-plugins/logooverlay/logooverlay.c \
+./src/gst-plugins/logooverlay/kmslogooverlay.c
+
+LOGOOVERLAY_LIBS= \
+../opencv-3.1.0/build/x64/vc14/lib/opencv_world310.lib -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
+
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
-LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.cpp=.o)
-IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.cpp=.o)
+LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
+IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.c=.o)
 FACEDETECTOR_OBJS=$(FACEDETECTOR_SRC:.c=.o)
-MOVEMENTDETECTOR_OBJS=$(MOVEMENTDETECTOR_SRC:.cpp=.o)
+MOVEMENTDETECTOR_OBJS=$(MOVEMENTDETECTOR_SRC:.c=.o)
 OPENCVFILTER_OBJS=$(OPENCVFILTER_SRC:.c=.o)
-KMSFILTERSINTERFACE_OBJS=$(KMSFILTERSINTERFACE_SRC:.c=.o)
+KMSFILTERSINTERFACE_OBJS=$(KMSFILTERSINTERFACE_SRC:.cpp=.o)
 KMSFILTERSIMPL_OBJS=$(KMSFILTERSIMPL_SRC:.cpp=.o)
-KMSFILTERSMODULE_OBJS=$(KMSFILTERSMODULE_SRC:.c=.o)
+KMSFILTERSMODULE_OBJS=$(KMSFILTERSMODULE_SRC:.cpp=.o)
 
 all: \
 $(TARGET_DIR)/$(FACEOVERLAY_TARGET) \
