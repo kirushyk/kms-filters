@@ -10,7 +10,6 @@ CFLAGS= \
 -DKURENTO_MODULES_DIR="\"./modules/\"" \
 -DPACKAGE="\"kms-filters\"" \
 -DVERSION="\"6.4.1.6\"" \
--Duint="unsigned" \
 -DWIN32_LEAN_AND_MEAN=1 \
 -I./win32/server/implementation/HttpServer/ \
 -I/usr/i686-w64-mingw32/sys-root/mingw/include/nice \
