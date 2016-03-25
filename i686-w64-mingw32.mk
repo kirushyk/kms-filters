@@ -123,6 +123,8 @@ KMSFILTERSINTERFACE_SRC= \
 ./win32/server/interface/generated-cpp/OpenCVFilter.cpp \
 ./win32/server/interface/generated-cpp/CodeFound.cpp \
 
+KMSFILTERSIMPL_TARGET=libkmsfiltersimpl.dll
+
 KMSFILTERSIMPL_SRC= \
 ./src/server/implementation/objects/FaceOverlayFilterImpl.cpp \
 ./src/server/implementation/objects/ImageOverlayFilterImpl.cpp \
