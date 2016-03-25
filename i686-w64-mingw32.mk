@@ -88,6 +88,15 @@ FACEDETECTOR_CXX_SRC= \
 FACEDETECTOR_LIBS= \
 -lopencv_imgproc310.dll -lopencv_objdetect310.dll -lopencv_imgcodecs310.dll -lopencv_core310.dll -lgstreamer-1.0 -lgstbase-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
 
+MOVEMENTDETECTOR_TARGET=libmovementdetector.dll
+
+MOVEMENTDETECTOR_SRC= \
+./src/gst-plugins/movementdetector/movementdetector.c \
+./src/gst-plugins/movementdetector/kmsmovementdetector.c
+
+MOVEMENTDETECTOR_LIBS= \
+-lopencv_imgproc310.dll -lopencv_objdetect310.dll -lopencv_imgcodecs310.dll -lopencv_core310.dll -lgstreamer-1.0 -lgstbase-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
+
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
 IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.c=.o)
@@ -109,6 +118,8 @@ $(TARGET_DIR)/$(OPENCVFILTER_TARGET) \
 $(TARGET_DIR)/$(KMSFILTERSINTERFACE_TARGET) \
 $(TARGET_DIR)/$(KMSFILTERSIMPL_TARGET) \
 $(TARGET_DIR)/$(KMSFILTERSMODULE_TARGET)
+
+ROUND_OBJ=win32/cvround.o
 
 $(TARGET_DIR)/$(KMSFILTERSINTERFACE_TARGET): $(KMSFILTERSINTERFACE_OBJS)
 	mkdir -p $(TARGET_DIR)
@@ -139,9 +150,9 @@ $(TARGET_DIR)/$(FACEDETECTOR_TARGET): $(FACEDETECTOR_OBJS)
 	mkdir -p $(TARGET_DIR)
 	$(CXX) -shared -o $@ $^ $(LIBS) $(FACEDETECTOR_LIBS)
 
-$(TARGET_DIR)/$(MOVEMENTDETECTOR_TARGET): $(MOVEMENTDETECTOR_OBJS)
+$(TARGET_DIR)/$(MOVEMENTDETECTOR_TARGET): $(ROUND_OBJ) $(MOVEMENTDETECTOR_OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $@ $^ $(LIBS) $(MOVEMENTDETECTORPLIBS)
+	$(CXX) -shared -o $@ $^ $(LIBS) $(MOVEMENTDETECTOR_LIBS)
 
 $(TARGET_DIR)/$(OPENCVFILTER_TARGET): $(OPENCVFILTER_OBJS)
 	mkdir -p $(TARGET_DIR)
