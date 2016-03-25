@@ -123,6 +123,19 @@ KMSFILTERSINTERFACE_SRC= \
 ./win32/server/interface/generated-cpp/OpenCVFilter.cpp \
 ./win32/server/interface/generated-cpp/CodeFound.cpp \
 
+KMSFILTERSIMPL_SRC= \
+./src/server/implementation/objects/FaceOverlayFilterImpl.cpp \
+./src/server/implementation/objects/ImageOverlayFilterImpl.cpp \
+./src/server/implementation/objects/ZBarFilterImpl.cpp \
+./src/server/implementation/objects/GStreamerFilterImpl.cpp \
+./src/server/implementation/objects/OpenCVFilterImpl.cpp \
+./win32/server/implementation/generated-cpp/SerializerExpanderFilters.cpp \
+./win32/server/implementation/generated-cpp/FaceOverlayFilterImplInternal.cpp \
+./win32/server/implementation/generated-cpp/ImageOverlayFilterImplInternal.cpp \
+./win32/server/implementation/generated-cpp/ZBarFilterImplInternal.cpp \
+./win32/server/implementation/generated-cpp/GStreamerFilterImplInternal.cpp \
+./win32/server/implementation/generated-cpp/OpenCVFilterImplInternal.cpp
+
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
 IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.c=.o)
