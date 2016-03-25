@@ -97,12 +97,23 @@ MOVEMENTDETECTOR_SRC= \
 MOVEMENTDETECTOR_LIBS= \
 -lopencv_imgproc310.dll -lopencv_objdetect310.dll -lopencv_imgcodecs310.dll -lopencv_core310.dll -lgstreamer-1.0 -lgstbase-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
 
+OPENCVFILTER_TARGET=libopencvfilter.dll
+
+OPENCVFILTER_C_SRC= \
+./src/gst-plugins/opencvfilter/opencvfilter.c
+
+OPENCVFILTER_CXX_SRC= \
+./src/gst-plugins/opencvfilter/kmsopencvfilter.cpp
+
+OPENCVFILTER_LIBS= \
+-lopencv_imgproc310.dll -lopencv_objdetect310.dll -lopencv_imgcodecs310.dll -lopencv_core310.dll -lgstreamer-1.0 -lgstbase-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
+
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
 IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.c=.o)
 FACEDETECTOR_OBJS=$(FACEDETECTOR_C_SRC:.c=.o) $(FACEDETECTOR_CXX_SRC:.cpp=.o)
 MOVEMENTDETECTOR_OBJS=$(MOVEMENTDETECTOR_SRC:.c=.o)
-OPENCVFILTER_OBJS=$(OPENCVFILTER_SRC:.c=.o)
+OPENCVFILTER_OBJS=$(OPENCVFILTER_C_SRC:.c=.o) $(OPENCVFILTER_CXX_SRC:.cpp=.o)
 KMSFILTERSINTERFACE_OBJS=$(KMSFILTERSINTERFACE_SRC:.cpp=.o)
 KMSFILTERSIMPL_OBJS=$(KMSFILTERSIMPL_SRC:.cpp=.o)
 KMSFILTERSMODULE_OBJS=$(KMSFILTERSMODULE_SRC:.cpp=.o)
