@@ -147,7 +147,19 @@ KMSFILTERSIMPL_LIBS= \
 -lsigc-2.0 \
 -lgstreamer-1.0 \
 -lgobject-2.0 \
--lglib-2.0 \
+-lglib-2.0
+
+KMSFILTERSMODULE_TARGET=libkmsfiltersmodule.dll
+
+KMSFILTERSMODULE_SRC= \
+./win32/server/implementation/generated-cpp/Module.cpp \
+./win32/server/module_version.cpp \
+./win32/server/module_name.cpp \
+./win32/server/module_descriptor.cpp \
+./win32/server/module_generation_time.cpp
+
+KMSFILTERSMODULE_LIBS= \
+-lkmsfiltersinterface \
 
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
