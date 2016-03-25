@@ -76,10 +76,22 @@ IMAGEOVERLAY_SRC= \
 IMAGEOVERLAY_LIBS= \
 -lopencv_imgproc310.dll -lopencv_imgcodecs310.dll -lopencv_core310.dll -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
 
+FACEDETECTOR_TARGET=libfacedetector.dll
+
+FACEDETECTOR_C_SRC= \
+./src/gst-plugins/facedetector/facedetector.c \
+./src/gst-plugins/facedetector/kmsfacedetector.c
+
+FACEDETECTOR_CXX_SRC= \
+./src/gst-plugins/facedetector/classifier.cpp
+
+FACEDETECTOR_LIBS= \
+-lopencv_imgproc310.dll -lopencv_objdetect310.dll -lopencv_imgcodecs310.dll -lopencv_core310.dll -lgstreamer-1.0 -lgstbase-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
+
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
 IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.c=.o)
-FACEDETECTOR_OBJS=$(FACEDETECTOR_SRC:.c=.o)
+FACEDETECTOR_OBJS=$(FACEDETECTOR_C_SRC:.c=.o) $(FACEDETECTOR_CXX_SRC:.cpp=.o)
 MOVEMENTDETECTOR_OBJS=$(MOVEMENTDETECTOR_SRC:.c=.o)
 OPENCVFILTER_OBJS=$(OPENCVFILTER_SRC:.c=.o)
 KMSFILTERSINTERFACE_OBJS=$(KMSFILTERSINTERFACE_SRC:.cpp=.o)
@@ -105,35 +117,35 @@ $(TARGET_DIR)/$(KMSFILTERSINTERFACE_TARGET): $(KMSFILTERSINTERFACE_OBJS)
 
 $(TARGET_DIR)/$(KMSFILTERSIMPL_TARGET): $(KMSFILTERSIMPL_OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $@ $^ $(KMSFILTERSIMPL_LIBS) -Wl,--out-implib,$@.a
+	$(CXX) -shared -o $@ $^ $(LIBS) $(KMSFILTERSIMPL_LIBS) -Wl,--out-implib,$@.a
 
 $(TARGET_DIR)/$(KMSFILTERSMODULE_TARGET): $(KMSFILTERSMODULE_OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $@ $^ $(KMSFILTERSMODULE_LIBS) -Wl,--out-implib,$@.a
+	$(CXX) -shared -o $@ $^ $(LIBS) $(KMSFILTERSMODULE_LIBS) -Wl,--out-implib,$@.a
 
 $(TARGET_DIR)/$(FACEOVERLAY_TARGET): $(FACEOVERLAY_OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $@ $^ $(FACEOVERLAY_LIBS)
+	$(CXX) -shared -o $@ $^ $(LIBS) $(FACEOVERLAY_LIBS)
 
 $(TARGET_DIR)/$(LOGOOVERLAY_TARGET): $(LOGOOVERLAY_OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $@ $^ $(LOGOOVERLAY_LIBS)
+	$(CXX) -shared -o $@ $^ $(LIBS) $(LOGOOVERLAY_LIBS)
 
 $(TARGET_DIR)/$(IMAGEOVERLAY_TARGET): $(IMAGEOVERLAY_OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $@ $^ $(IMAGEOVERLAY_LIBS)
+	$(CXX) -shared -o $@ $^ $(LIBS) $(IMAGEOVERLAY_LIBS)
 
 $(TARGET_DIR)/$(FACEDETECTOR_TARGET): $(FACEDETECTOR_OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $@ $^ $(FACEDETECTOR_LIBS)
+	$(CXX) -fPIC -shared -o $@ $^ $(LIBS) $(FACEDETECTOR_LIBS)
 
 $(TARGET_DIR)/$(MOVEMENTDETECTOR_TARGET): $(MOVEMENTDETECTOR_OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $@ $^ $(MOVEMENTDETECTORPLIBS)
+	$(CXX) -shared -o $@ $^ $(LIBS) $(MOVEMENTDETECTORPLIBS)
 
 $(TARGET_DIR)/$(OPENCVFILTER_TARGET): $(OPENCVFILTER_OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $@ $^ $(OPENCVFILTER_LIBS)
+	$(CXX) -shared -o $@ $^ $(LIBS) $(OPENCVFILTER_LIBS)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) -o $@ $<
