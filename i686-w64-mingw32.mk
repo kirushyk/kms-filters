@@ -138,6 +138,9 @@ KMSFILTERSIMPL_SRC= \
 ./win32/server/implementation/generated-cpp/GStreamerFilterImplInternal.cpp \
 ./win32/server/implementation/generated-cpp/OpenCVFilterImplInternal.cpp
 
+KMSFILTERSIMPL_LIBS= \
+-lkmscoreimpl.dll
+
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
 IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.c=.o)
