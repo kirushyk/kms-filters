@@ -67,6 +67,15 @@ LOGOOVERLAY_SRC= \
 LOGOOVERLAY_LIBS= \
 -lopencv_imgproc310.dll -lopencv_imgcodecs310.dll -lopencv_core310.dll -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
 
+IMAGEOVERLAY_TARGET=libimageoverlay.dll
+
+IMAGEOVERLAY_SRC= \
+./src/gst-plugins/imageoverlay/imageoverlay.c \
+./src/gst-plugins/imageoverlay/kmsimageoverlay.c \
+
+IMAGEOVERLAY_LIBS= \
+-lopencv_imgproc310.dll -lopencv_imgcodecs310.dll -lopencv_core310.dll -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
+
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
 IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.c=.o)
