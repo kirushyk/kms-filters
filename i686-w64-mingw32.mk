@@ -139,6 +139,7 @@ KMSFILTERSIMPL_SRC= \
 ./win32/server/implementation/generated-cpp/OpenCVFilterImplInternal.cpp
 
 KMSFILTERSIMPL_LIBS= \
+-lkmsfiltersinterface \
 -lkmscoreimpl.dll \
 -lkmsgstcommons \
 -lkmsjsoncpp.dll \
