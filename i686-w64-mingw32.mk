@@ -139,7 +139,14 @@ KMSFILTERSIMPL_SRC= \
 ./win32/server/implementation/generated-cpp/OpenCVFilterImplInternal.cpp
 
 KMSFILTERSIMPL_LIBS= \
--lkmscoreimpl.dll
+-lkmscoreimpl.dll \
+-lkmsgstcommons \
+-lkmsjsoncpp.dll \
+-lkmsjsonrpc.dll \
+-lsigc-2.0 \
+-lgstreamer-1.0 \
+-lgobject-2.0 \
+-lglib-2.0 \
 
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
