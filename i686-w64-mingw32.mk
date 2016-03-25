@@ -108,6 +108,21 @@ OPENCVFILTER_CXX_SRC= \
 OPENCVFILTER_LIBS= \
 -lopencv_imgproc310.dll -lopencv_objdetect310.dll -lopencv_imgcodecs310.dll -lopencv_core310.dll -lgstreamer-1.0 -lgstbase-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lsoup-2.4
 
+KMSFILTERSINTERFACE_TARGET=libkmsfiltersinterface.a
+
+KMSFILTERSINTERFACE_SRC= \
+./win32/server/interface/generated-cpp/FaceOverlayFilterInternal.cpp \
+./win32/server/interface/generated-cpp/ImageOverlayFilterInternal.cpp \
+./win32/server/interface/generated-cpp/ZBarFilterInternal.cpp \
+./win32/server/interface/generated-cpp/GStreamerFilterInternal.cpp \
+./win32/server/interface/generated-cpp/OpenCVFilterInternal.cpp \
+./win32/server/interface/generated-cpp/FaceOverlayFilter.cpp \
+./win32/server/interface/generated-cpp/ImageOverlayFilter.cpp \
+./win32/server/interface/generated-cpp/ZBarFilter.cpp \
+./win32/server/interface/generated-cpp/GStreamerFilter.cpp \
+./win32/server/interface/generated-cpp/OpenCVFilter.cpp \
+./win32/server/interface/generated-cpp/CodeFound.cpp \
+
 FACEOVERLAY_OBJS=$(FACEOVERLAY_SRC:.c=.o)
 LOGOOVERLAY_OBJS=$(LOGOOVERLAY_SRC:.c=.o)
 IMAGEOVERLAY_OBJS=$(IMAGEOVERLAY_SRC:.c=.o)
