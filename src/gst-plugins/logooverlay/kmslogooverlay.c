@@ -28,9 +28,6 @@
 #include <string.h>
 #include <errno.h>
 
-int cvRound(int a)
-{return a;}
-
 #include <opencv/cv.h>
 
 #include <opencv/highgui.h>
