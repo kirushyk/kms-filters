@@ -15,11 +15,6 @@
 #include <config.h>
 #include <gst/gst.h>
 
-int cvRound(int a)
-{
-	return a;
-}
-
 #include "kmsmovementdetector.h"
 
 static gboolean
